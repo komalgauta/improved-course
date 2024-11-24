@@ -4,12 +4,14 @@ import * as bcrypt from "https://deno.land/x/bcrypt/mod.ts"; // For password has
 
 const app = new Hono();
 
-// Middleware to add the CSP header
+// Middleware to add the CSP header with frame-ancestors directive and X-Frame-Options
 app.use('*', async (c, next) => {
   c.header(
     "Content-Security-Policy",
-    "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self';"
+    "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; frame-ancestors 'none';"
   );
+  c.header("X-Frame-Options", "DENY"); // Alternatively, you can use "SAMEORIGIN"
+  
   await next();
 });
 

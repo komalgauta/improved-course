@@ -42,7 +42,7 @@ JOIN
 
 -- Consent History Table: Track consent for compliance
 CREATE TABLE abc123_consent_history (
-    consent_id SERIAL PRIMARY KEY,
+    user_id SERIAL PRIMARY KEY,
     user_id INT NOT NULL REFERENCES abc123_users(user_id),
     consent_given BOOLEAN DEFAULT FALSE,
     consent_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -55,3 +55,13 @@ CREATE TABLE abc123_data_access_requests (
     request_type VARCHAR(50) CHECK (request_type IN ('access', 'delete', 'update')),
     request_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE abc123_login_logs (
+    log_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL REFERENCES abc123_users(user_id) ON DELETE CASCADE,
+    login_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    success BOOLEAN NOT NULL,
+    ip_address VARCHAR(45) -- Optional: Store the IP address of the user
+);
+
+

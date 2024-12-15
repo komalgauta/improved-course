@@ -11,3 +11,5 @@ cybersecurity and data privacy- komal
 | 11.11.2024  | 12h | 3 | Introduction to Cybersecurity |
 | 24.11.2024 |20  | 4 | The Booking system project → Phase 1
 | 27.11.2024  | 12h | 5 | The Booking system project → Phase 2 |
+| 15.12.2024  | 5h | 6 | The final phase |
+
